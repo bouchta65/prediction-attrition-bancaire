@@ -1,0 +1,12 @@
+from pyspark.sql import SparkSession
+from pyspark.ml.feature import VectorAssembler, StandardScaler
+from pyspark.ml.classification import RandomForestClassifier
+from pyspark.ml import Pipeline
+
+
+spark = SparkSession.builder.getOrCreate()
+
+file_path = "../data/dataset-68f599a4c9b84581895311-6907667a3f0be705109390.csv"
+
+df_preprocessed = spark.read.csv("../data/db_final.csv", header=True, inferSchema=True)
+df_preprocessed.show(5)
